@@ -33,7 +33,7 @@ function PostDetailPage() {
 
   useEffect(() => {
       // 게시글 상세 정보 가져오기
-      fetch(`http://dev-blog-opal-theta.vercel.app/postData`, {
+      fetch(`https://dev-blog-opal-theta.vercel.app/postData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

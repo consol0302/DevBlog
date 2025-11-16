@@ -28,7 +28,7 @@ function MainContent() {
       return;
     }
 
-    fetch('http://dev-blog-opal-theta.vercel.app/list')
+    fetch('https://dev-blog-opal-theta.vercel.app/list')
       .then(response => response.json())
       .then(data => {
         console.log('받은 데이터:', data);
