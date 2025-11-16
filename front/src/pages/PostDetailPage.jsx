@@ -33,7 +33,7 @@ function PostDetailPage() {
 
   useEffect(() => {
       // 게시글 상세 정보 가져오기
-      fetch(`https://dev-blog-opal-theta.vercel.app/postData`, {
+      fetch(`https://devblog-n50a.onrender.com/postData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ function PostDetailPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:8000/sendComment', {
+      const response = await fetch('https://devblog-n50a.onrender.com/sendComment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ function PostDetailPage() {
       
       // 댓글 목록 새로고침 (또는 새 댓글을 직접 추가)
       // 방법 1: 전체 데이터 다시 불러오기
-      const refreshResponse = await fetch(`http://localhost:8000/postData`, {
+      const refreshResponse = await fetch(`https://devblog-n50a.onrender.com/postData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

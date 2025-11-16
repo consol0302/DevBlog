@@ -16,7 +16,7 @@ function PostListPage() {
     if (location.pathname !== '/posts') {
       return;
     }
-    fetch('https://dev-blog-opal-theta.vercel.app/list')
+    fetch('https://devblog-n50a.onrender.com/list')
       .then(response => response.json())
       .then(data => {  
         if (Array.isArray(data)) {
