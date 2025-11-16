@@ -16,7 +16,7 @@ supabase: Client = create_client("https://oujekswpyehyoixvnodf.supabase.co/", "e
 # CORS 설정 (React 프론트엔드와 통신)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React 개발 서버
+    allow_origins=["devblog-flame-nine.vercel.app"],  # React 개발 서버
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
