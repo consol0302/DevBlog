@@ -16,7 +16,7 @@ function PostListPage() {
     if (location.pathname !== '/posts') {
       return;
     }
-    fetch('http://localhost:8000/list')
+    fetch('http://dev-blog-opal-theta.vercel.app/list')
       .then(response => response.json())
       .then(data => {  
         if (Array.isArray(data)) {
