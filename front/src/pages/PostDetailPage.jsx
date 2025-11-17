@@ -32,7 +32,6 @@ function PostDetailPage() {
   };
 
   useEffect(() => {
-      // 게시글 상세 정보 가져오기
       fetch(`https://devblog-n50a.onrender.com/postData`, {
         method: 'POST',
         headers: {
