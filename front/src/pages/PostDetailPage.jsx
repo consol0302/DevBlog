@@ -13,20 +13,14 @@ function PostDetailPage() {
   const [newComment, setNewComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // content JSON 문자열을 파싱하는 함수
   const parseContent = (content) => {
     if (!content) return '';
-    
     try {
-      // JSON 문자열을 객체로 파싱
       const contentObj = typeof content === 'string' 
         ? JSON.parse(content) 
         : content;
-      
-      // 객체의 모든 값을 추출해서 합치기
       return Object.values(contentObj).join('\n\n');
     } catch (e) {
-      // 파싱 실패시 원본 반환
       return typeof content === 'string' ? content : '';
     }
   };
@@ -87,9 +81,6 @@ function PostDetailPage() {
       }
 
       const result = await response.json();
-      
-      // 댓글 목록 새로고침 (또는 새 댓글을 직접 추가)
-      // 방법 1: 전체 데이터 다시 불러오기
       const refreshResponse = await fetch(`https://devblog-n50a.onrender.com/postData`, {
         method: 'POST',
         headers: {
@@ -103,7 +94,6 @@ function PostDetailPage() {
       const refreshData = await refreshResponse.json();
       setComments(Array.isArray(refreshData[1]) ? refreshData[1] : []);
       
-      // 입력창 초기화
       setNewComment('');
       alert('댓글이 작성되었습니다!');
     } catch (error) {
@@ -144,7 +134,6 @@ function PostDetailPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* 뒤로 가기 버튼 */}
         <button
           onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition mb-8 group"
@@ -153,15 +142,11 @@ function PostDetailPage() {
           <span>뒤로 가기</span>
         </button>
 
-        {/* 게시글 내용 */}
         <article className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
-          {/* 헤더 */}
           <div className="p-8 border-b border-gray-200">
             <h1 className="text-4xl font-bold text-gray-900 mb-6">
               {post.title}
             </h1>
-
-            {/* 메타 정보 */}
             <div className="flex flex-wrap items-center gap-6 text-gray-600">
               <div className="flex items-center gap-2">
                 <User className="w-5 h-5" />
@@ -183,8 +168,6 @@ function PostDetailPage() {
                 })}</span>
               </div>
             </div>
-
-            {/* 태그 */}
             {post.tag && post.tag.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-6">
                 {post.tag.map((tagItem, tagIndex) => (
@@ -199,8 +182,6 @@ function PostDetailPage() {
               </div>
             )}
           </div>
-
-          {/* 본문 - Markdown 렌더링 */}
           <div className="p-8">
             <div className="prose prose-lg max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-code:text-pink-600 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100">
               {parseContent(post.content) ? (
@@ -211,10 +192,7 @@ function PostDetailPage() {
             </div>
           </div>
         </article>
-
-        {/* 댓글 섹션 */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-          {/* 댓글 헤더 */}
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center gap-2">
               <MessageCircle className="w-6 h-6 text-blue-600" />
@@ -223,8 +201,6 @@ function PostDetailPage() {
               </h2>
             </div>
           </div>
-
-          {/* 댓글 작성 폼 */}
           <div className="p-6 border-b border-gray-200 bg-gray-50">
             <form onSubmit={handleSubmitComment}>
               <textarea
@@ -247,8 +223,6 @@ function PostDetailPage() {
               </div>
             </form>
           </div>
-
-          {/* 댓글 목록 */}
           <div className="divide-y divide-gray-200">
             {comments.length === 0 ? (
               <div className="p-12 text-center">
@@ -260,12 +234,9 @@ function PostDetailPage() {
               comments.map((comment) => (
                 <div key={comment.id} className="p-6 hover:bg-gray-50 transition">
                   <div className="flex items-start gap-4">
-                    {/* 프로필 아이콘 */}
                     <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center">
                       <User className="w-5 h-5 text-white" />
                     </div>
-                    
-                    {/* 댓글 내용 */}
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <span className="font-semibold text-gray-900">익명</span>
@@ -289,8 +260,6 @@ function PostDetailPage() {
             )}
           </div>
         </div>
-
-        {/* 하단 네비게이션 */}
         <div className="mt-8 flex justify-center">
           <Link
             to="/"

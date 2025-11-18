@@ -26,7 +26,6 @@ function PostListPage() {
       .catch(error => console.error('Error:', error));
   }, []);
 
-  // 정렬된 게시글 목록
   const sortedPosts = [...allPosts].sort((a, b) => {
     const dateA = new Date(a.created_at);
     const dateB = new Date(b.created_at);
@@ -38,13 +37,11 @@ function PostListPage() {
     }
   });
 
-  // 페이지네이션 계산
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
   const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
 
-  // 페이지 번호 배열 생성
   const getPageNumbers = () => {
     const pageNumbers = [];
     const maxVisiblePages = 5;
@@ -71,24 +68,20 @@ function PostListPage() {
     return pageNumbers;
   };
 
-  // 페이지 변경 핸들러
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // 정렬 변경 시 첫 페이지로
   const handleSortChange = (order) => {
     setSortOrder(order);
     setCurrentPage(1);
   };
 
-  // 게시글 클릭 핸들러
   const handlePostClick = (postId) => {
     navigate(`/post/${postId}`);
   };
 
-  // 전체 인덱스 계산 (페이지네이션을 고려한)
   const getGlobalIndex = (localIndex) => {
     return indexOfFirstPost + localIndex;
   };
@@ -96,7 +89,7 @@ function PostListPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* 헤더 섹션 */}
+        {/* 헤더 */}
         <div className="mb-10">
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-4">
@@ -110,8 +103,6 @@ function PostListPage() {
               총 <span className="font-bold text-blue-600">{allPosts.length}</span>개의 게시글이 있습니다
             </p>
           </div>
-          
-          {/* 정렬 버튼 그룹 */}
           <div className="flex justify-center gap-3">
             <button
               onClick={() => handleSortChange('desc')}
@@ -138,8 +129,6 @@ function PostListPage() {
             </button>
           </div>
         </div>
-
-        {/* 게시글 목록 */}
         {sortedPosts.length === 0 ? (
           <div className="text-center py-20">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-4">
@@ -161,7 +150,6 @@ function PostListPage() {
                 >
                   <div className="p-6">
                     <div className="flex items-start gap-4">
-                      {/* 번호 뱃지 */}
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl flex items-center justify-center group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300">
                         <span className="text-lg font-bold text-blue-600 group-hover:text-white transition-colors">
                           {sortOrder === 'desc' 
@@ -169,8 +157,6 @@ function PostListPage() {
                             : sortedPosts.length - getGlobalIndex(index)}
                         </span>
                       </div>
-                      
-                      {/* 컨텐츠 */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between mb-2">
                           <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
@@ -182,8 +168,6 @@ function PostListPage() {
                         <p className="text-gray-600 mb-3 line-clamp-1 text-sm">
                           {post.author || '개발자'}
                         </p>
-                        
-                        {/* 태그와 날짜를 한 줄로 */}
                         <div className="flex flex-wrap items-center gap-3">
                           {post.tag && post.tag.length > 0 && (
                             <div className="flex flex-wrap gap-2">

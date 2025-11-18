@@ -7,7 +7,6 @@ function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* 헤더 */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-4">
             About Us
@@ -16,8 +15,6 @@ function AboutPage() {
             프론트엔드와 백엔드에 한 발씩만 걸치고 있는 개발자들입니다.
           </p>
         </div>
-
-        {/* 개발자 카드 */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* Consol */}
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
@@ -55,7 +52,7 @@ function AboutPage() {
                 </div>
               </div>
               
-              {/* Consol 연락처 */}
+              {/* 연락처 */}
               <div className="space-y-2">
                 <a 
                   href="https://github.com/consol0302" 
@@ -115,7 +112,7 @@ function AboutPage() {
                 </div>
               </div>
               
-              {/* Trishest 연락처 */}
+              {/* 연락처 */}
               <div className="space-y-2">
                 <a 
                   href="https://github.com/choi36" 
@@ -137,8 +134,6 @@ function AboutPage() {
             </div>
           </div>
         </div>
-
-        {/* 기술 스택 */}
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-8">
             <div>
