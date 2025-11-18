@@ -43,7 +43,7 @@ app.add_middleware(
 def root():
     return "nothing"
 
-@app.get('/')
+@app.get('/list')
 def list():
     response = supabase_client.table("post").select("*").execute()
     return response.data
