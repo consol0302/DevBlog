@@ -26,7 +26,7 @@ function PostDetailPage() {
   };
 
   useEffect(() => {
-      fetch(`https://devblog-n50a.onrender.com/postData`, {
+      fetch(`https://devblog-copy.vercel.app/postData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ function PostDetailPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://devblog-n50a.onrender.com/sendComment', {
+      const response = await fetch('https://devblog-copy.vercel.app/sendComment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ function PostDetailPage() {
       }
 
       const result = await response.json();
-      const refreshResponse = await fetch(`https://devblog-n50a.onrender.com/postData`, {
+      const refreshResponse = await fetch(`https://devblog-copy.vercel.app/postData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

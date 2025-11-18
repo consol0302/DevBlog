@@ -27,7 +27,7 @@ function MainContent() {
       return;
     }
 
-    fetch('https://devblog-n50a.onrender.com/list')
+    fetch('https://devblog-copy.vercel.app/list')
       .then(response => response.json())
       .then(data => {
         console.log('받은 데이터:', data);
