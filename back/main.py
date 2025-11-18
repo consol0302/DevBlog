@@ -19,9 +19,9 @@ class Settings(BaseSettings):
     supabase_anon_key: str
     frontend_url: str
     
-    class Config:
-        env_file = ".env"
-        case_sensitive = False
+class Config:
+    env_file = ".env"
+    case_sensitive = False
 
 settings = Settings()
 
